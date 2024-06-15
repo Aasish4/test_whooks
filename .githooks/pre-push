@@ -1,19 +1,40 @@
 #!/bin/sh
 
+# Function to read configuration
+read_config() {
+    CONFIG_FILE="../hook-config.cfg"
+    if [ -f "$CONFIG_FILE" ]; then
+        . "$CONFIG_FILE"
+    fi
+}
 
-cd backend
+# Read configuration
+read_config
 
-colcon build
-
-if [ $? -ne 0 ]; then
-	echo "Build failed. Aborting push"
-	echo ""
-	exit 1
-else
-	echo "Build succeeded. proceeding with push."
-	echo ""
+# Check if the pre-push hook is enabled
+if [ "$ENABLED" != "true" ]; then
+    echo "Pre-push hook is disabled. Skipping build."
+    exit 0
 fi
 
+# Navigate to the backend directory
+cd backend
+
+# Run the build command
+colcon build
+
+# Check if the build was successful
+if [ $? -ne 0 ]; then
+    echo "Build failed. Aborting push."
+    echo ""  # Add a new line
+    exit 1
+else
+    echo "Build succeeded. Proceeding with push."
+    echo ""  # Add a new line
+fi
+
+# Navigate back to the root directory
 cd ..
 
 exit 0
+
