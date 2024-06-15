@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "working dir" pwd
+echo $(pwd)
 
 # Function to read configuration
 read_config() {
