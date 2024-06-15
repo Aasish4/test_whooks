@@ -4,7 +4,7 @@ CONFIG_FILE=".githooks/hook-config.cfg"
 source $CONFIG_FILE
 
 # Check the exit code of the previous command (source)
-if [[ $? -eq 0 ]]; then
+if [ $? -eq 0 ]; then
   echo "Config file sourced successfully"
 else
   echo "Error: Failed to source config file"
