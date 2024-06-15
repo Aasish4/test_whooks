@@ -1,19 +1,10 @@
 #!/bin/bash
 
-CONFIG_FILE=".githooks/hook-config.cfg"
-source $CONFIG_FILE
-
-# Check the exit code of the previous command (source)
-if [ $? -eq 0 ]; then
-  echo "Config file loaded successfully"
-else
-  echo "Error: Failed to load config file"
-fi
-
+enable_hook=${ENABLE_HOOK:-true}
 
 
 # Check if the pre-push hook is enabled
-if [ "$ENABLE_HOOK" != "true" ]; then
+if [ "$enable_hook" != "true" ]; then
     echo "Pre-push hook is disabled. Skipping build."
     echo ""    
     exit 0
