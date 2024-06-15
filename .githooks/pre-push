@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 CONFIG_FILE=".githooks/hook-config.cfg"
 source $CONFIG_FILE
