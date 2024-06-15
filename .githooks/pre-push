@@ -3,18 +3,11 @@
 echo $(pwd)
 
 # Function to read configuration
-read_config() {
-    CONFIG_FILE=".githooks/hook-config.cfg"
-    if [ -f "$CONFIG_FILE" ]; then
-        . "$CONFIG_FILE"
-    else
-        echo "Configuration file $CONFIG_FILE not found. Assuming pre-push hook is enabled."
-        ENABLED=true
-    fi
-}
+CONFIG_FILE=".githooks/hook-config.cfg"
+source $CONFIG_FILE
 
-# Read configuration
-read_config
+echo "Enable pre-push hook: $ENABLE_HOOK"
+
 
 # Check if the pre-push hook is enabled
 if [ "$ENABLED" != "true" ]; then
