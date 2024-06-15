@@ -5,9 +5,9 @@ source $CONFIG_FILE
 
 # Check the exit code of the previous command (source)
 if [ $? -eq 0 ]; then
-  echo "Config file sourced successfully"
+  echo "Config file loaded successfully"
 else
-  echo "Error: Failed to source config file"
+  echo "Error: Failed to load config file"
   # Optionally, exit the script with a specific code
   exit 1
 fi
@@ -15,9 +15,11 @@ fi
 
 
 # Check if the pre-push hook is enabled
-if [ "$ENABLED" != "true" ]; then
+if [ "$ENABLE_HOOK" != "true" ]; then
     echo "Pre-push hook is disabled. Skipping build."
     exit 0
+else
+    echo "Pre-push hook enabled"
 fi
 
 # Navigate to the backend directory
