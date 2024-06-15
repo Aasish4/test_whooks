@@ -1,12 +1,13 @@
 #!/bin/sh
 
-echo $(pwd)
-
-# Function to read configuration
 CONFIG_FILE=".githooks/hook-config.cfg"
 source $CONFIG_FILE
 
-echo "Enable pre-push hook: $ENABLE_HOOK"
+if [ -n "$ENABLE_HOOK" ]; then
+	echo "Pre-push hook enabled"
+else
+	echo "Pre-push hook disabled"
+fi
 
 
 # Check if the pre-push hook is enabled
