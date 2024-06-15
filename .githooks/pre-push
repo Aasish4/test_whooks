@@ -5,6 +5,9 @@ read_config() {
     CONFIG_FILE="../hook-config.cfg"
     if [ -f "$CONFIG_FILE" ]; then
         . "$CONFIG_FILE"
+    else
+        echo "Configuration file $CONFIG_FILE not found. Assuming pre-push hook is enabled."
+        ENABLED=true
     fi
 }
 
@@ -37,4 +40,3 @@ fi
 cd ..
 
 exit 0
-
