@@ -2,7 +2,7 @@
 
 # Function to read configuration
 read_config() {
-    CONFIG_FILE="hook-config.cfg"
+    CONFIG_FILE="../hook-config.cfg"
     if [ -f "$CONFIG_FILE" ]; then
         . "$CONFIG_FILE"
     else
