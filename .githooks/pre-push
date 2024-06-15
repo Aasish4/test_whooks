@@ -3,11 +3,15 @@
 CONFIG_FILE=".githooks/hook-config.cfg"
 source $CONFIG_FILE
 
-if [ -n "$ENABLE_HOOK" ]; then
-	echo "Pre-push hook enabled"
+# Check the exit code of the previous command (source)
+if [[ $? -eq 0 ]]; then
+  echo "Config file sourced successfully"
 else
-	echo "Pre-push hook disabled"
+  echo "Error: Failed to source config file"
+  # Optionally, exit the script with a specific code
+  exit 1
 fi
+
 
 
 # Check if the pre-push hook is enabled
