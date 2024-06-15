@@ -8,8 +8,6 @@ if [ $? -eq 0 ]; then
   echo "Config file loaded successfully"
 else
   echo "Error: Failed to load config file"
-  # Optionally, exit the script with a specific code
-  exit 1
 fi
 
 
@@ -17,9 +15,11 @@ fi
 # Check if the pre-push hook is enabled
 if [ "$ENABLE_HOOK" != "true" ]; then
     echo "Pre-push hook is disabled. Skipping build."
+    echo ""    
     exit 0
 else
     echo "Pre-push hook enabled"
+    echo ""
 fi
 
 # Navigate to the backend directory
